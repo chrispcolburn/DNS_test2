@@ -2,6 +2,53 @@
 <html lang="en">
 
 <head>
+	<!-- Privacy Manager -->
+	<script   src="https://ccpa-wrapper.privacymanager.io/ccpa/19b57d3b-8951-4a37-bd22-bf8d5b7d87dd/ccpa-liveramp.js"></script>	
+	<style>
+        .cs_pToggle {
+            position: fixed;
+            cursor: pointer;
+            z-index: 2147483646;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .cs_toggle {
+            background-color: #F88D37;
+            background-image: linear-gradient(to right, #F88D37, #F88D37);
+            color: #ffffff;
+            border: solid #F88D37 0px;
+            border-radius: 18px;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            font-weight: bold;
+            line-height: normal;
+        }
+
+        .cs_span {
+            font-size: 13px;
+            text-transform: uppercase;
+		line-height: 24px;
+        }
+         </style>
+	<script>
+    function doNotSell() {
+        window.__ccpa("doNotSellMyData", null, 1, function () {});
+        var url = "https://github.com/chrispcolburn/DNS_test2/blob/master/templates/requests.html"
+        var auditId
+        var domain
+        __ccpa('getConsent', null, 1, function (data) {
+            auditId = data.auditId
+            domain = window.location.hostname
+        });
+        var uri = url + "?auditID=" + auditId + "&domain=" + domain;
+        var res = encodeURI(uri);
+        console.log(res);
+        window.location = uri
+  } </script>
 	<meta name="robots" content="noindex,nofollow">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,7 +68,13 @@
 
 <body>
         <!-- <div class="loader"></div> -->
-
+<div class="cs_pToggle">
+    <button onclick="doNotSell()" class="cs_toggle">
+        <span class="cs_span">
+            Do Not Sell My Info
+	</span>
+    </button>
+</div>
     <div class="header-wrapper">
             <header class="header">	
                     <div class="container">	
