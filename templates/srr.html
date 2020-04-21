@@ -135,6 +135,44 @@
     </footer>
 
 	<script src="../dist/js/app.min.js"></script>
+	<script>
+             function getUrlVars() {
+                 var vars = {};
+                 var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                     vars[key] = value;
+                 });
+                 return vars;
+             }
+             function getUrlParam(parameter, defaultvalue) {
+                 var urlparameter = defaultvalue;
+                 if (window.location.href.indexOf(parameter) > -1) {
+                     urlparameter = getUrlVars()[parameter];
+                 }
+                 return urlparameter;
+             }
+             function addInvisibleFields() {
+                 var auditID = getUrlParam('auditID', 'Empty');
+                 var domain = getUrlParam('domain', 'Empty');
+                 console.log("Audit ID: "+auditID)
+                 console.log("Domain: "+domain)
+                 document.getElementById('Faktor_Audit_ID').value = auditID;
+                 document.getElementById('Faktor_Audit_ID').dispatchEvent(new Event('input', {}));
+                 document.getElementById('Faktor_Domain').value = domain;
+                 document.getElementById('Faktor_Domain').dispatchEvent(new Event('input', {}));
+             }
+    </script>
+Collapse
+
+<script>
+     setTimeout(function () {     addInvisibleFields();     }, 5000);
+ </script>
+
+
+
+
+
+
+
 </body>
 
 </html>
